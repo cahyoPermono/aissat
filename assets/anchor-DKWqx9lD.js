@@ -1,0 +1,1 @@
+import{c}from"./triangle-alert-CQQ5elsR.js";const o=[["path",{d:"M12 22V8",key:"qkxhtm"}],["path",{d:"M5 12H2a10 10 0 0 0 20 0h-3",key:"1hv3nh"}],["circle",{cx:"12",cy:"5",r:"3",key:"rqqgnr"}]],e=c("anchor",o);export{e as A};
