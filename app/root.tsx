@@ -8,6 +8,7 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import { Navigation } from "./components/Navigation";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -33,7 +34,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <div className="flex h-screen bg-gray-100">
+          <Navigation />
+          <main className="flex-1 overflow-y-auto">
+            {children}
+          </main>
+        </div>
         <ScrollRestoration />
         <Scripts />
       </body>
