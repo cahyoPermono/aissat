@@ -2,6 +2,7 @@ import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 import { Ship, Anchor, AlertTriangle, Map, Wifi, Dot, Search, Bell, ChevronsUpDown, ArrowUp, ArrowDown, MoreHorizontal } from 'lucide-react';
 import { useIsClient } from '../hooks/useIsClient';
+import { LiveMap } from './LiveMap';
 
 const vesselData = [
   { name: 'MV OCEAN EMERALD', mmsi: 235827000, status: 'In Transit', origin: 'Shanghai', destination: 'Rotterdam', speed: '18.5 kn', eta: '2d 14h', source: 'Satellite' },
@@ -88,8 +89,8 @@ export function Dashboard() {
         <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow-sm">
           <h2 className="text-lg font-semibold text-gray-800 mb-1">Live Vessel Tracking</h2>
           <p className="text-sm text-gray-500 mb-4">Real-time AIS data visualization</p>
-          <div className="bg-gray-200 h-96 rounded-lg flex items-center justify-center">
-            <p className="text-gray-500">Interactive Map View</p>
+          <div className="h-96 rounded-lg overflow-hidden">
+            <LiveMap />
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-sm">

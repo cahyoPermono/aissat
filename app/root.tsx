@@ -10,6 +10,7 @@ import {
 import type { Route } from "./+types/root";
 import { Navigation } from "./components/Navigation";
 import "./app.css";
+import "leaflet/dist/leaflet.css";
 
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
