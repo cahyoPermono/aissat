@@ -5,7 +5,6 @@ export default [
   {
     index: true,
     file: "routes/home.tsx",
-    loader: () => redirect("/dashboard"),
   },
   route("dashboard", "routes/dashboard.tsx"),
   route("routes", "routes/routes.tsx"),

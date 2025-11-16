@@ -3,6 +3,8 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieC
 import { Ship, Anchor, AlertTriangle, Map, Wifi, Dot, Search, Bell, ChevronsUpDown, ArrowUp, ArrowDown, MoreHorizontal } from 'lucide-react';
 import { useIsClient } from '../hooks/useIsClient';
 import { LiveMap } from './LiveMap';
+import { MapOnly } from './MapOnly';
+import type { LatLngExpression } from 'leaflet';
 
 const vesselData = [
   { name: 'MV OCEAN EMERALD', mmsi: 235827000, status: 'In Transit', origin: 'Shanghai', destination: 'Rotterdam', speed: '18.5 kn', eta: '2d 14h', source: 'Satellite' },
@@ -58,6 +60,13 @@ const COLORS = ['#6366F1', '#818CF8', '#A5B4FC', '#C7D2FE', '#E0E7FF', '#EEF2FF'
 export function Dashboard() {
   const isClient = useIsClient();
 
+  const dashboardShips = [
+    { id: 1, name: "Ever Ace", position: [-6.12, 106.89] as LatLngExpression, status: "In Transit" },
+    { id: 2, name: "HMM Algeciras", position: [-6.10, 106.90] as LatLngExpression, status: "At Port" },
+    { id: 3, name: "MSC Gulsun", position: [-6.09, 106.87] as LatLngExpression, status: "In Transit" },
+    { id: 4, name: "CMA CGM Jacques Saadé", position: [-6.11, 106.86] as LatLngExpression, status: "Alert" },
+  ];
+
   return (
     <main className="flex-1 p-6">
       <header className="flex justify-between items-center mb-6">
@@ -90,7 +99,7 @@ export function Dashboard() {
           <h2 className="text-lg font-semibold text-gray-800 mb-1">Live Vessel Tracking</h2>
           <p className="text-sm text-gray-500 mb-4">Real-time AIS data visualization</p>
           <div className="h-96 rounded-lg overflow-hidden">
-            <LiveMap />
+            <MapOnly center={[-6.10, 106.88]} zoom={13} ships={dashboardShips} />
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-sm">

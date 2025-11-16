@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import type { LatLngExpression } from 'leaflet';
 import { Search, Bell, Wifi, Ship, Map as MapIcon, Anchor, AlertTriangle, Check, X, Plus, Minus, LocateFixed, Maximize, ChevronDown, Info, Star, ArrowRight, Route } from 'lucide-react';
-
-// Define a placeholder component that does nothing.
-const MapPlaceholder = () => (
-  <div style={{ height: '100%', width: '100%', background: '#eef2ff' }} />
-);
+import { MapOnly } from './MapOnly'; // Import the new MapOnly component
 
 const recentActivityData = [
   {
@@ -29,42 +25,14 @@ const recentActivityData = [
 ];
 
 export function LiveMap() {
-  const [Map, setMap] = useState(() => MapPlaceholder);
-
-  useEffect(() => {
-    (async () => {
-      await import('leaflet/dist/leaflet.css');
-      const { MapContainer, TileLayer, Marker, Popup } = await import('react-leaflet');
-
-      const position: LatLngExpression = [-6.10, 106.88];
-      const zoom = 13;
-      const ships = [
-        { id: 1, name: "Ever Ace", position: [-6.12, 106.89] as LatLngExpression, status: "In Transit" },
-        { id: 2, name: "HMM Algeciras", position: [-6.10, 106.90] as LatLngExpression, status: "At Port" },
-        { id: 3, name: "MSC Gulsun", position: [-6.09, 106.87] as LatLngExpression, status: "In Transit" },
-        { id: 4, name: "CMA CGM Jacques Saadé", position: [-6.11, 106.86] as LatLngExpression, status: "Alert" },
-      ];
-
-      const ClientMap = () => (
-        <MapContainer center={position} zoom={zoom} scrollWheelZoom={true} style={{ height: '100%', width: '100%', zIndex: 0 }}>
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {ships.map(ship => (
-            <Marker key={ship.id} position={ship.position}>
-              <Popup>
-                <b>{ship.name}</b><br />
-                Status: {ship.status}
-              </Popup>
-            </Marker>
-          ))}
-        </MapContainer>
-      );
-
-      setMap(() => ClientMap);
-    })();
-  }, []);
+  const position: LatLngExpression = [-6.10, 106.88];
+  const zoom = 13;
+  const ships = [
+    { id: 1, name: "Ever Ace", position: [-6.12, 106.89] as LatLngExpression, status: "In Transit" },
+    { id: 2, name: "HMM Algeciras", position: [-6.10, 106.90] as LatLngExpression, status: "At Port" },
+    { id: 3, name: "MSC Gulsun", position: [-6.09, 106.87] as LatLngExpression, status: "In Transit" },
+    { id: 4, name: "CMA CGM Jacques Saadé", position: [-6.11, 106.86] as LatLngExpression, status: "Alert" },
+  ];
 
   return (
     <div className="flex h-screen bg-gray-100 font-sans">
@@ -91,7 +59,7 @@ export function LiveMap() {
         <div className="flex-1 flex relative overflow-hidden">
           {/* Map Area */}
           <div className="flex-1 h-full">
-            <Map />
+            <MapOnly center={position} zoom={zoom} ships={ships} /> {/* Use MapOnly here */}
           </div>
 
           {/* Left Sidebar */}
