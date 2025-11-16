@@ -1,58 +1,70 @@
 import React, { useState } from 'react';
-import { Ship, Map, Clock, AlertTriangle, Search, MoreHorizontal, ChevronDown, Eye, Anchor, MapPin } from 'lucide-react';
+import { Ship, Map, Clock, AlertTriangle, Search, MoreHorizontal, ChevronDown, Eye, Anchor, MapPin, Wifi, Zap, Compass } from 'lucide-react';
 import { Modal } from './Modal';
+import { MapOnly } from './MapOnly';
+import type { LatLngExpression } from 'leaflet';
 
 const fleetData = [
   {
+    id: 1,
     name: 'TANTO KASIH',
     mmsi: 235827000,
     type: 'Container Ship',
     status: 'In Transit',
     location: 'Java Sea',
+    position: [-5.5, 110.5] as LatLngExpression,
     speed: '18.5 kts',
     aisSource: 'Satellite',
     lastUpdate: '2 min ago',
     route: ['Singapore Port', 'Tanjung Priok', 'Shanghai Port', 'Rotterdam Port'],
   },
   {
+    id: 2,
     name: 'HF LUCKY',
     mmsi: 353136000,
     type: 'Container Ship',
     status: 'At Port',
     location: 'Tanjung Priok',
+    position: [-6.10, 106.88] as LatLngExpression,
     speed: '0.0 kts',
     aisSource: 'Terrestrial',
     lastUpdate: '5 min ago',
     route: ['Surabaya Port', 'Tanjung Priok', 'Singapore Port'],
   },
   {
+    id: 3,
     name: 'DM 399',
     mmsi: 219018000,
     type: 'Deck Barge',
     status: 'Anchored',
     location: 'Tanjung Priok',
+    position: [-6.11, 106.92] as LatLngExpression,
     speed: '0.2 kts',
     aisSource: 'Terrestrial',
     lastUpdate: '1 min ago',
     route: ['Batam Port', 'Tanjung Priok'],
   },
   {
+    id: 4,
     name: 'IPCM ABIMANYU V',
     mmsi: 477992900,
     type: 'Tug Boat',
     status: 'In Transit',
     location: 'Sunda Strait',
+    position: [-5.85, 105.9] as LatLngExpression,
     speed: '16.8 kts',
     aisSource: 'Terrestrial',
     lastUpdate: '3 min ago',
     route: ['Merak Port', 'Tanjung Priok', 'Bakamla Port'],
   },
   {
+    id: 5,
     name: 'CMA CGM Antoine',
     mmsi: 228339600,
     type: 'Cargo Ship',
     status: 'Anchored',
     location: 'Port of Rotterdam',
+    position: [51.95, 4.29] as LatLngExpression,
     speed: '0.2 kts',
     aisSource: 'Terrestrial',
     lastUpdate: '7 min ago',
@@ -165,49 +177,77 @@ export function Fleet() {
           </div>
         </div>
       </main>
-      <Modal isOpen={!!selectedVessel} onClose={() => setSelectedVessel(null)} title={`Vessel Tracking: ${selectedVessel?.name}`}>
+      <Modal isOpen={!!selectedVessel} onClose={() => setSelectedVessel(null)} title={`Vessel Details: ${selectedVessel?.name}`}>
         {selectedVessel && (
-          <div className="p-2">
-            <div className="flow-root">
-              <ul className="-mb-8">
-                {selectedVessel.route.map((port, index) => {
-                  const isLast = index === selectedVessel.route.length - 1;
-                  const isCurrent = selectedVessel.location === port;
-                  const isCompleted = selectedVessel.route.indexOf(selectedVessel.location) > index;
+          <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Left Column: Route Timeline */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Route Timeline</h3>
+              <div className="flow-root">
+                <ul className="-mb-8">
+                  {selectedVessel.route.map((port, index) => {
+                    const isLast = index === selectedVessel.route.length - 1;
+                    const isCurrent = selectedVessel.location === port;
+                    const isCompleted = selectedVessel.route.indexOf(selectedVessel.location) > index;
 
-                  return (
-                    <li key={index}>
-                      <div className="relative pb-8">
-                        {!isLast ? (
-                          <span className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
-                        ) : null}
-                        <div className="relative flex space-x-3">
-                          <div>
-                            <span className={`h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white ${
-                              isCurrent ? 'bg-blue-500' : isCompleted ? 'bg-green-500' : 'bg-gray-400'
-                            }`}>
-                              <MapPin className="h-5 w-5 text-white" />
-                            </span>
-                          </div>
-                          <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                    return (
+                      <li key={index}>
+                        <div className="relative pb-8">
+                          {!isLast ? (
+                            <span className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+                          ) : null}
+                          <div className="relative flex space-x-3">
                             <div>
-                              <p className="text-sm text-gray-500">{port}</p>
+                              <span className={`h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white ${
+                                isCurrent ? 'bg-blue-500' : isCompleted ? 'bg-green-500' : 'bg-gray-400'
+                              }`}>
+                                <MapPin className="h-5 w-5 text-white" />
+                              </span>
                             </div>
-                            <div className="text-right text-sm whitespace-nowrap text-gray-500">
-                              <time>{isCurrent ? 'Current' : isCompleted ? 'Departed' : 'Upcoming'}</time>
+                            <div className="min-w-0 flex-1 pt-1.5 flex justify-between space-x-4">
+                              <div><p className="text-sm text-gray-700 font-medium">{port}</p></div>
+                              <div className="text-right text-sm whitespace-nowrap text-gray-500">
+                                <time>{isCurrent ? 'Current' : isCompleted ? 'Departed' : 'Upcoming'}</time>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </li>
-                  );
-                })}
-              </ul>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+
+            {/* Right Column: Map and Details */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Current Location</h3>
+              <div className="h-48 w-full rounded-lg overflow-hidden mb-6">
+                <MapOnly center={selectedVessel.position} zoom={8} ships={[selectedVessel]} />
+              </div>
+              <div className="space-y-4">
+                <DetailItem icon={Anchor} label="Status" value={selectedVessel.status} />
+                <DetailItem icon={Zap} label="Speed" value={selectedVessel.speed} />
+                <DetailItem icon={Wifi} label="AIS Source" value={selectedVessel.aisSource} />
+                <DetailItem icon={Clock} label="Last Update" value={selectedVessel.lastUpdate} />
+                <DetailItem icon={Compass} label="MMSI" value={String(selectedVessel.mmsi)} />
+                <DetailItem icon={Ship} label="Type" value={selectedVessel.type} />
+              </div>
             </div>
           </div>
         )}
       </Modal>
     </>
+  );
+}
+
+function DetailItem({ icon: Icon, label, value }: { icon: React.ElementType, label: string, value: string }) {
+  return (
+    <div className="flex items-center text-sm">
+      <Icon className="h-5 w-5 text-gray-400 mr-3" />
+      <span className="text-gray-500">{label}:</span>
+      <span className="font-semibold text-gray-800 ml-auto">{value}</span>
+    </div>
   );
 }
 
