@@ -3,7 +3,9 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-export default defineConfig({
-  // base: "/aissat/",
-  plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+export default defineConfig(({ mode }) => {
+  return {
+    base: mode === "production" ? "/aissat/" : "/",
+    plugins: [tailwindcss(), reactRouter(), tsconfigPaths()],
+  };
 });

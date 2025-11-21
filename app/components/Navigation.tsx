@@ -6,6 +6,7 @@ const navLinks = [
   { to: "/live-map", icon: Map, label: "Live Map" },
   { to: "/fleet", icon: Ship, label: "Fleet" },
   { to: "/routes", icon: Route, label: "Routes" },
+  { to: "/voyages", icon: Ship, label: "Voyages" },
   { to: "/alerts", icon: AlertTriangle, label: "Alerts" },
   { to: "/analytics", icon: BarChart, label: "Analytics" },
   { to: "/settings", icon: Settings, label: "Settings" },

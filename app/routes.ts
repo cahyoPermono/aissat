@@ -10,4 +10,6 @@ export default [
   route("routes", "routes/routes.tsx"),
   route("fleet", "routes/fleet.tsx"),
   route("live-map", "routes/live-map.tsx"),
+  route("voyages", "routes/voyages.tsx"),
+  route("voyages/:voyageId", "routes/voyages.$voyageId.tsx"),
 ] satisfies RouteConfig;
