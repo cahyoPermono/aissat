@@ -8,7 +8,7 @@
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
-    "predeploy": "pnpm run build",
+    "predeploy": "pnpm run build && node ./scripts/copy-index-to-404.js",
     "deploy": "gh-pages -d build/client"
   },
   "dependencies": {

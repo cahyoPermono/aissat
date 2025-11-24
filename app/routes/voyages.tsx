@@ -1,5 +1,5 @@
-import { Voyages } from '../components/Voyages';
+import { Ports } from '../components/Ports';
 
-export default function VoyagesPage() {
-  return <Voyages />;
+export default function PortsPage() {
+  return <Ports />;
 }

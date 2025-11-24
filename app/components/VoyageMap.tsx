@@ -23,10 +23,8 @@ export function VoyageMap({ from, to, fromName, toName }: VoyageMapProps) {
       const { MapContainer, TileLayer, Marker, Popup, Polyline } = await import('react-leaflet');
 
       const ClientMap = () => {
-        const bounds: LatLngExpression[] = [from, to];
-
         return (
-            <MapContainer bounds={bounds} scrollWheelZoom={true} style={{ height: '100%', width: '100%', zIndex: 0, borderRadius: '8px' }}>
+            <MapContainer center={from} zoom={8} scrollWheelZoom={true} style={{ height: '100%', width: '100%', zIndex: 0, borderRadius: '8px' }}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"

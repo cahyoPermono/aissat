@@ -17,6 +17,7 @@ export interface Vessel {
     from: [number, number];
     to: [number, number];
   };
+  waypoints?: [number, number][]; // Optional intermediate points for multi-hop routes
 }
 
 export interface VoyageGroup {
@@ -48,6 +49,7 @@ export const voyageGroups: VoyageGroup[] = [
           { id: 'c2', name: 'Bauxite', quantity: '1,000 MT' },
         ],
         coordinates: { from: [-2.75, 107.75], to: [13.78, 109.23] },
+        waypoints: [[23.02, 113.75]], // Via Dongguan
       },
       {
         id: 'minh-truong-18',
@@ -82,6 +84,7 @@ export const voyageGroups: VoyageGroup[] = [
             { id: 'c4', name: 'Steel Coils', quantity: '3,249 MT' },
         ],
         coordinates: { from: [-2.75, 107.75], to: [13.75, 100.51] },
+        waypoints: [[20.84, 106.68]], // Via Haiphong
       },
       {
         id: 'star-56',
