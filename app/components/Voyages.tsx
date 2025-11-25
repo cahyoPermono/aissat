@@ -40,14 +40,14 @@ export function Voyages() {
           <p className="text-sm text-gray-500">A comprehensive list of all vessel voyages.</p>
         </div>
         <div className="flex items-center space-x-2">
-           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-            <input 
-              type="text" 
-              placeholder="Search voyages..." 
-              className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+          <input
+            type="text"
+            placeholder="Search voyages..."
+            className="pl-10 pr-4 py-2 w-full md:w-64 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+        </div>
           <button className="flex items-center space-x-2 px-4 py-2 rounded-lg bg-indigo-600 text-white font-semibold hover:bg-indigo-700 transition">
             <Plus size={20} />
             <span>Add Voyage</span>
@@ -134,4 +134,3 @@ export function Voyages() {
     </div>
   );
 }
-

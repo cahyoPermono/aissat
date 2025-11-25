@@ -37,8 +37,8 @@ export const voyageGroups: VoyageGroup[] = [
     dateRange: 'Jan 2024 - Apr 2024',
     vessels: [
       {
-        id: 'phu-dat-268',
-        name: 'PHU DAT 268',
+        id: 'indonesia-marine-268',
+        name: 'INDONESIA MARINE 268',
         dwt: '2,959',
         date: '23 Jan 24',
         from: 'Belitung Island',
@@ -52,8 +52,8 @@ export const voyageGroups: VoyageGroup[] = [
         waypoints: [[23.02, 113.75]], // Via Dongguan
       },
       {
-        id: 'minh-truong-18',
-        name: 'MINH TRUONG 18',
+        id: 'nusantara-express-18',
+        name: 'NUSANTARA EXPRESS 18',
         dwt: '5,083',
         date: '1 Apr 24',
         from: 'Belitung Island',
@@ -73,8 +73,8 @@ export const voyageGroups: VoyageGroup[] = [
     dateRange: 'Sep 2024',
     vessels: [
       {
-        id: 'hoang-phuong',
-        name: 'HOANG PHUONG...',
+        id: 'garuda-samudra',
+        name: 'GARUDA SAMUDRA',
         dwt: '4,334',
         date: '6 Sep 24',
         from: 'Belitung Island',
@@ -87,8 +87,8 @@ export const voyageGroups: VoyageGroup[] = [
         waypoints: [[20.84, 106.68]], // Via Haiphong
       },
       {
-        id: 'star-56',
-        name: 'STAR 56',
+        id: 'pelindo-pioneer-56',
+        name: 'PELINDO PIONEER 56',
         dwt: '2,959',
         date: '11 Sep 24',
         from: 'Belitung Island',
@@ -98,6 +98,69 @@ export const voyageGroups: VoyageGroup[] = [
             { id: 'c5', name: 'Cement', quantity: '2,827 MT' },
         ],
         coordinates: { from: [-2.75, 107.75], to: [20.84, 106.68] },
+      },
+    ]
+  },
+  {
+    id: 'vg-3',
+    name: 'Tanjung Priuk Departures',
+    vesselCount: 1,
+    dateRange: 'Nov 2025',
+    vessels: [
+      {
+        id: 'vessel2',
+        name: 'Vessel 2',
+        dwt: '3,000',
+        date: '25 Nov 25',
+        from: 'Tanjung Priuk',
+        to: 'Qui Nhon',
+        duration: '30',
+        commodities: [
+          { id: 'c6', name: 'Containers', quantity: '500 TEU' },
+        ],
+        coordinates: { from: [-6.0886, 106.8863], to: [13.78, 109.23] },
+      },
+    ]
+  },
+  {
+    id: 'vg-4',
+    name: 'Tanjung Perak Departures',
+    vesselCount: 1,
+    dateRange: 'Nov 2025',
+    vessels: [
+      {
+        id: 'vessel3',
+        name: 'Vessel 3',
+        dwt: '3,500',
+        date: '26 Nov 25',
+        from: 'Tanjung Perak',
+        to: 'Dongguan',
+        duration: '20',
+        commodities: [
+          { id: 'c7', name: 'Textiles', quantity: '1,500 MT' },
+        ],
+        coordinates: { from: [-7.2043, 112.7183], to: [23.02, 113.75] },
+      },
+    ]
+  },
+  {
+    id: 'vg-5',
+    name: 'Tanjung Mas Departures',
+    vesselCount: 1,
+    dateRange: 'Nov 2025',
+    vessels: [
+      {
+        id: 'vessel4',
+        name: 'Vessel 4',
+        dwt: '4,000',
+        date: '27 Nov 25',
+        from: 'Tanjung Mas',
+        to: 'Bangkok',
+        duration: '15',
+        commodities: [
+          { id: 'c8', name: 'Electronics', quantity: '800 MT' },
+        ],
+        coordinates: { from: [-6.9275, 110.3631], to: [13.75, 100.51] },
       },
     ]
   }

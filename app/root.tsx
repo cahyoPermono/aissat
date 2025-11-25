@@ -37,9 +37,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="flex h-screen bg-gray-100">
           <Navigation />
-          <main className="flex-1 overflow-y-auto">
-            {children}
-          </main>
+          <main className="flex-1 md:ml-0 overflow-y-auto">
+      <div className="md:hidden h-16"></div> {/* Spacer for mobile menu button */}
+      {children}
+    </main>
         </div>
         <ScrollRestoration />
         <Scripts />

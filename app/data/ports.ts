@@ -17,30 +17,23 @@ export const ports: Port[] = [
     commodities: [] // Will be aggregated
   },
   {
-    id: 'qui-nhon',
-    name: 'Qui Nhon',
-    coordinates: [13.78, 109.23],
+    id: 'tanjung-priuk',
+    name: 'Tanjung Priuk',
+    coordinates: [-6.0886, 106.8863],
     vessels: [],
     commodities: []
   },
   {
-    id: 'dongguan',
-    name: 'Dongguan',
-    coordinates: [23.02, 113.75],
+    id: 'tanjung-perak',
+    name: 'Tanjung Perak',
+    coordinates: [-7.2043, 112.7183],
     vessels: [],
     commodities: []
   },
   {
-    id: 'bangkok',
-    name: 'Bangkok',
-    coordinates: [13.75, 100.51],
-    vessels: [],
-    commodities: []
-  },
-  {
-    id: 'haiphong',
-    name: 'Haiphong',
-    coordinates: [20.84, 106.68],
+    id: 'tanjung-mas',
+    name: 'Tanjung Mas',
+    coordinates: [-6.9275, 110.3631],
     vessels: [],
     commodities: []
   }

@@ -74,15 +74,17 @@ export function Dashboard() {
           <h1 className="text-2xl font-bold text-gray-800">Fleet Overview</h1>
           <p className="text-sm text-gray-500">Real-time vessel tracking and monitoring</p>
         </div>
-        <div className="flex items-center space-x-4">
+        <div className="flex flex-col md:flex-row items-start md:items-center space-y-4 md:space-y-0 md:space-x-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-            <input type="text" placeholder="Search vessels..." className="pl-10 pr-4 py-2 w-64 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <input type="text" placeholder="Search vessels..." className="pl-10 pr-4 py-2 w-full md:w-64 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
-          <Bell className="text-gray-500" size={24} />
-          <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span className="text-sm font-medium text-gray-700">System Online</span>
+          <div className="flex items-center space-x-4">
+            <Bell className="text-gray-500" size={24} />
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+              <span className="text-sm font-medium text-gray-700">System Online</span>
+            </div>
           </div>
         </div>
       </header>
@@ -155,20 +157,21 @@ export function Dashboard() {
           </div>
           <a href="#" className="text-sm font-medium text-blue-600 hover:underline">View All →</a>
         </div>
-        <table className="w-full">
-          <thead>
-            <tr className="text-left text-xs text-gray-500 uppercase">
-              <th className="py-2">Vessel</th>
-              <th className="py-2">MMSI</th>
-              <th className="py-2">Status</th>
-              <th className="py-2">Origin</th>
-              <th className="py-2">Destination</th>
-              <th className="py-2">Speed</th>
-              <th className="py-2">ETA</th>
-              <th className="py-2">AIS Source</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[800px]">
+            <thead>
+              <tr className="text-left text-xs text-gray-500 uppercase">
+                <th className="py-2">Vessel</th>
+                <th className="py-2">MMSI</th>
+                <th className="py-2">Status</th>
+                <th className="py-2">Origin</th>
+                <th className="py-2">Destination</th>
+                <th className="py-2">Speed</th>
+                <th className="py-2">ETA</th>
+                <th className="py-2">AIS Source</th>
+              </tr>
+            </thead>
+            <tbody>
             {vesselData.map((vessel, index) => (
               <tr key={index} className="border-b border-gray-200 text-sm text-gray-700">
                 <td className="py-4 flex items-center space-x-3">
@@ -204,8 +207,9 @@ export function Dashboard() {
                 </td>
               </tr>
             ))}
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div className="bg-white p-6 rounded-lg shadow-sm mt-6">
         <div className="flex justify-between items-center mb-4">
