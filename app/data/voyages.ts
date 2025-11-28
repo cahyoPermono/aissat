@@ -45,7 +45,6 @@ export const voyageGroups: VoyageGroup[] = [
         to: 'Qui Nhon',
         duration: '25',
         commodities: [
-          { id: 'c1', name: 'Nickel Ore', quantity: '2,649 MT' },
           { id: 'c2', name: 'Bauxite', quantity: '1,000 MT' },
         ],
         coordinates: { from: [-2.75, 107.75], to: [13.78, 109.23] },
@@ -60,7 +59,7 @@ export const voyageGroups: VoyageGroup[] = [
         to: 'Dongguan',
         duration: '17',
         commodities: [
-          { id: 'c3', name: 'Coal', quantity: '5,083 MT' },
+          // { id: 'c3', name: 'Coal', quantity: '5,083 MT' },
         ],
         coordinates: { from: [-2.75, 107.75], to: [23.02, 113.75] },
       },
@@ -81,7 +80,7 @@ export const voyageGroups: VoyageGroup[] = [
         to: 'Bangkok',
         duration: '12',
         commodities: [
-            { id: 'c4', name: 'Steel Coils', quantity: '3,249 MT' },
+            // { id: 'c4', name: 'Steel Coils', quantity: '3,249 MT' },
         ],
         coordinates: { from: [-2.75, 107.75], to: [13.75, 100.51] },
         waypoints: [[20.84, 106.68]], // Via Haiphong
@@ -95,7 +94,7 @@ export const voyageGroups: VoyageGroup[] = [
         to: 'Haiphong',
         duration: '36',
         commodities: [
-            { id: 'c5', name: 'Cement', quantity: '2,827 MT' },
+            // { id: 'c5', name: 'Cement', quantity: '2,827 MT' },
         ],
         coordinates: { from: [-2.75, 107.75], to: [20.84, 106.68] },
       },
