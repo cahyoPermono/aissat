@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { LatLngExpression } from 'leaflet';
+import L from 'leaflet';
 
 interface MapOnlyProps {
   center: LatLngExpression;
@@ -13,6 +14,16 @@ const MapPlaceholder = () => (
     <p>Loading map...</p>
   </div>
 );
+
+// Create ship icon from PNG
+const createShipIcon = () => {
+  return L.icon({
+    iconUrl: '/cargo_ship.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -16]
+  });
+};
 
 export function MapOnly({ center, zoom, ships }: MapOnlyProps) {
   const [MapComponent, setMapComponent] = useState(() => MapPlaceholder);
@@ -33,7 +44,7 @@ export function MapOnly({ center, zoom, ships }: MapOnlyProps) {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {ships.map(ship => (
-            <Marker key={ship.id} position={ship.position}>
+            <Marker key={ship.id} position={ship.position} icon={createShipIcon()}>
               <Popup>
                 <b>{ship.name}</b><br />
                 Status: {ship.status}

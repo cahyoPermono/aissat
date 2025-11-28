@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import type { LatLngExpression } from 'leaflet';
+import L from 'leaflet';
 
 interface VoyageMapProps {
   from: [number, number];
@@ -13,6 +14,16 @@ const MapPlaceholder = () => (
     <p style={{color: '#334155'}}>Loading map...</p>
   </div>
 );
+
+// Create ship icon from PNG
+const createShipIcon = () => {
+  return L.icon({
+    iconUrl: '/cargo_ship.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -16]
+  });
+};
 
 export function VoyageMap({ from, to, fromName, toName }: VoyageMapProps) {
   const [MapComponent, setMapComponent] = useState(() => MapPlaceholder);
@@ -29,10 +40,10 @@ export function VoyageMap({ from, to, fromName, toName }: VoyageMapProps) {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
             />
-            <Marker position={from}>
+            <Marker position={from} icon={createShipIcon()}>
               <Popup>{`Departure: ${fromName}`}</Popup>
             </Marker>
-            <Marker position={to}>
+            <Marker position={to} icon={createShipIcon()}>
               <Popup>{`Arrival: ${toName}`}</Popup>
             </Marker>
             <Polyline positions={[from, to]} color="#2b6ef6" />

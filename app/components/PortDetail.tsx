@@ -2,6 +2,17 @@ import { useParams } from 'react-router';
 import { ports } from '../data/ports';
 import React, { useEffect, useState } from 'react';
 import type { LatLngExpression } from 'leaflet';
+import L from 'leaflet';
+
+// Create ship icon from PNG
+const createShipIcon = () => {
+  return L.icon({
+    iconUrl: '/cargo_ship.png',
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -16]
+  });
+};
 
 // Simple map component for port routes
 const PortMap = ({ vessels }: { vessels: any[] }) => {
@@ -49,7 +60,7 @@ const PortMap = ({ vessels }: { vessels: any[] }) => {
                     }
 
                     return (
-                      <Marker key={pointIndex} position={point}>
+                      <Marker key={pointIndex} position={point} icon={createShipIcon()}>
                         <Popup>
                           <div>
                             <strong>{vessel.name}</strong><br />
