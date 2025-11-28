@@ -103,22 +103,22 @@ export const voyageGroups: VoyageGroup[] = [
   },
   {
     id: 'vg-3',
-    name: 'Tanjung Priuk Departures',
+    name: 'Tanjung Priuk Arrivals',
     vesselCount: 1,
     dateRange: 'Nov 2025',
     vessels: [
       {
-        id: 'vessel2',
-        name: 'Vessel 2',
-        dwt: '3,000',
-        date: '25 Nov 25',
-        from: 'Tanjung Priuk',
-        to: 'Qui Nhon',
-        duration: '30',
+        id: 'glovis-crystal',
+        name: 'GLOVIS CRYSTAL',
+        dwt: '3,500',
+        date: '27 Nov 25',
+        from: 'Dammam',
+        to: 'Tanjung Priuk',
+        duration: '11 days',
         commodities: [
-          { id: 'c6', name: 'Containers', quantity: '500 TEU' },
+          { id: 'c6', name: 'Containers', quantity: '1,200 TEU' },
         ],
-        coordinates: { from: [-6.0886, 106.8863], to: [13.78, 109.23] },
+        coordinates: { from: [26.4342, 50.1033], to: [-6.0886, 106.8863] },
       },
     ]
   },

@@ -5,21 +5,21 @@ import { MapOnly } from './MapOnly'; // Import the new MapOnly component
 
 const recentActivityData = [
   {
-    vessel: 'Ever Given',
-    action: 'Departed Singapore',
-    time: '5 minutes ago',
-    icon: Ship,
-  },
-  {
-    vessel: 'COSCO Shipping',
-    action: 'Arrived at Hong Kong',
-    time: '12 minutes ago',
+    vessel: 'GLOVIS CRYSTAL',
+    action: 'Arrived at Tanjung Priuk',
+    time: '2 days ago',
     icon: Anchor,
   },
   {
-    vessel: 'Maersk Viking',
+    vessel: 'Ever Ace',
+    action: 'Departed Jakarta',
+    time: '3 days ago',
+    icon: Ship,
+  },
+  {
+    vessel: 'HMM Algeciras',
     action: 'Speed deviation alert',
-    time: '18 minutes ago',
+    time: '1 week ago',
     icon: AlertTriangle,
   },
 ];
@@ -30,7 +30,7 @@ export function LiveMap() {
   const ships = [
     { id: 1, name: "Ever Ace", position: [-6.12, 106.89] as LatLngExpression, status: "In Transit" },
     { id: 2, name: "HMM Algeciras", position: [-6.10, 106.90] as LatLngExpression, status: "At Port" },
-    { id: 3, name: "MSC Gulsun", position: [-6.09, 106.87] as LatLngExpression, status: "In Transit" },
+    { id: 3, name: "GLOVIS CRYSTAL", position: [-6.09, 106.87] as LatLngExpression, status: "At Port" },
     { id: 4, name: "CMA CGM Jacques Saadé", position: [-6.11, 106.86] as LatLngExpression, status: "Alert" },
   ];
 
@@ -112,19 +112,19 @@ export function LiveMap() {
           {/* Right Sidebar */}
           <div className="absolute top-4 right-4 z-10 w-80 bg-white p-4 rounded-lg shadow-md">
             <div className="flex justify-between items-center mb-4">
-              <div className="flex items-center space-x-2"><Ship size={20} className="text-indigo-500" /><div><p className="font-semibold text-gray-800">MSC Gülsün</p><p className="text-xs text-gray-500">Container Ship</p></div></div>
+              <div className="flex items-center space-x-2"><Ship size={20} className="text-indigo-500" /><div><p className="font-semibold text-gray-800">GLOVIS CRYSTAL</p><p className="text-xs text-gray-500">Container Ship</p></div></div>
               <X size={20} className="text-gray-400 cursor-pointer" />
             </div>
-            <div className="mb-4"><span className="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">In Transit</span></div>
+            <div className="mb-4"><span className="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">At Port</span></div>
             <div className="grid grid-cols-2 gap-y-2 text-sm mb-4">
               <p className="text-gray-500">MMSI</p><p className="text-gray-800 font-medium text-right">235827000</p>
               <p className="text-gray-500">IMO</p><p className="text-gray-800 font-medium text-right">9839668</p>
-              <p className="text-gray-500">Speed</p><p className="text-gray-800 font-medium text-right">18.5 knots</p>
+              <p className="text-gray-500">Speed</p><p className="text-gray-800 font-medium text-right">0.0 knots</p>
               <p className="text-gray-500">Heading</p><p className="text-gray-800 font-medium text-right">285° (WNW)</p>
               <p className="text-gray-500">AIS Source</p><p className="text-gray-800 font-medium text-right flex items-center justify-end space-x-1"><Wifi size={16} className="text-indigo-500" /> <span>Satellite</span></p>
             </div>
-            <div className="flex justify-between items-center text-sm mb-4"><div className="text-center"><p className="text-gray-500">Origin</p><p className="font-medium text-gray-800">Shanghai</p><p className="text-xs text-gray-500">China</p></div><ArrowRight size={20} className="text-gray-400" /><div className="text-center"><p className="text-gray-500">Destination</p><p className="font-medium text-gray-800">Rotterdam</p><p className="text-xs text-gray-500">Netherlands</p></div></div>
-            <div className="mb-4"><p className="text-sm text-gray-500">ETA</p><p className="font-medium text-gray-800">2d 14h</p><div className="w-full bg-gray-200 rounded-full h-2 mt-1"><div className="bg-indigo-600 h-2 rounded-full" style={{ width: '65%' }}></div></div><p className="text-xs text-gray-500 mt-1">65% completed</p></div>
+            <div className="flex justify-between items-center text-sm mb-4"><div className="text-center"><p className="text-gray-500">Origin</p><p className="font-medium text-gray-800">Dammam</p><p className="text-xs text-gray-500">Saudi Arabia</p></div><ArrowRight size={20} className="text-gray-400" /><div className="text-center"><p className="text-gray-500">Destination</p><p className="font-medium text-gray-800">Tanjung Priuk</p><p className="text-xs text-gray-500">Indonesia</p></div></div>
+            <div className="mb-4"><p className="text-sm text-gray-500">Status</p><p className="font-medium text-green-600">Arrived</p><p className="text-xs text-gray-500 mt-1">27 Nov 2025 22:59 (UTC+7)</p></div>
             <div className="flex space-x-2"><button className="flex-1 flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-indigo-600 text-white font-semibold"><Route size={20} /> <span>View Route</span></button><button className="px-3 py-2 rounded-lg bg-gray-200 text-gray-700"><Star size={20} /></button></div>
             <div className="mt-6"><h3 className="font-semibold text-gray-800 mb-3">Recent Activity</h3><div className="space-y-3">{recentActivityData.map((activity, index) => (<div key={index} className="flex items-start space-x-3"><div className="bg-gray-100 p-2 rounded-full"><activity.icon size={16} className="text-gray-500" /></div><div><p className="text-sm font-medium text-gray-800">{activity.action}</p><p className="text-xs text-gray-500">{activity.vessel}</p></div><p className="text-xs text-gray-400 ml-auto">{activity.time}</p></div>))}</div></div>
           </div>
