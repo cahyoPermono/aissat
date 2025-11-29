@@ -45,14 +45,13 @@ const vesselActivityData = [
     { time: '22:00', value: 190 },
 ];
 
-const portDistributionData = [
-    { name: 'Shanghai', value: 18.2 },
-    { name: 'Singapore', value: 15.4 },
-    { name: 'Rotterdam', value: 13.0 },
-    { name: 'Dubai', value: 11.3 },
-    { name: 'Los Angeles', value: 10.1 },
-    { name: 'Hamburg', value: 8.91 },
-    { name: 'Others', value: 23.1 },
+const commodityDistributionData = [
+    { name: 'Containers', value: 32.5, description: 'Container ships and TEU cargo' },
+    { name: 'Crude Oil', value: 22.8, description: 'Oil tankers and petroleum products' },
+    { name: 'Bulk Cargo', value: 18.6, description: 'Grain, coal, and dry bulk goods' },
+    { name: 'Chemicals', value: 12.4, description: 'Chemical tankers and hazardous materials' },
+    { name: 'General Cargo', value: 8.2, description: 'Mixed and breakbulk cargo' },
+    { name: 'Others', value: 5.5, description: 'Specialized and other cargo types' },
 ];
 
 const COLORS = ['#6366F1', '#818CF8', '#A5B4FC', '#C7D2FE', '#E0E7FF', '#EEF2FF', '#F8FAFC'];
@@ -140,19 +139,33 @@ export function Dashboard() {
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow-sm">
-          <h2 className="text-lg font-semibold text-gray-800 mb-1">Port Distribution</h2>
-          <p className="text-sm text-gray-500 mb-4">Current vessel locations</p>
+          <h2 className="text-lg font-semibold text-gray-800 mb-1">Commodity Distribution</h2>
+          <p className="text-sm text-gray-500 mb-4">Fleet composition by commodity type</p>
           <div style={{ height: 300 }}>
             {isClient && (
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie data={portDistributionData} cx="50%" cy="50%" labelLine={false} outerRadius={100} fill="#8884d8" dataKey="value" label>
-                    {portDistributionData.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
+                  <Pie data={commodityDistributionData} cx="50%" cy="50%" labelLine={false} outerRadius={100} fill="#8884d8" dataKey="value" label={({ name, value }) => `${name} ${value}%`}>
+                    {commodityDistributionData.map((_entry: typeof commodityDistributionData[0], index: number) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)}
                   </Pie>
-                  <Tooltip />
+                  <Tooltip formatter={(value) => `${value}%`} />
                 </PieChart>
               </ResponsiveContainer>
             )}
+          </div>
+          <div className="mt-4 space-y-2 text-sm">
+            {commodityDistributionData.map((item, index) => (
+              <div key={index} className="flex items-start space-x-3">
+                <div className="w-3 h-3 rounded-full mt-1.5" style={{ backgroundColor: COLORS[index % COLORS.length] }}></div>
+                <div className="flex-1">
+                  <div className="flex justify-between">
+                    <p className="font-medium text-gray-800">{item.name}</p>
+                    <p className="font-semibold text-gray-800">{item.value}%</p>
+                  </div>
+                  <p className="text-xs text-gray-500">{item.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
