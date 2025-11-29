@@ -74,6 +74,7 @@ export function VoyageDetail() {
             to={vessel.coordinates.to}
             fromName={vessel.from}
             toName={vessel.to}
+            waypoints={vessel.waypoints}
           />
         </div>
 

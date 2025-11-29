@@ -61,10 +61,18 @@ export function Dashboard() {
   const isClient = useIsClient();
 
   const dashboardShips = [
-    { id: 1, name: "Ever Ace", position: [-6.12, 106.89] as LatLngExpression, status: "In Transit" },
-    { id: 2, name: "HMM Algeciras", position: [-6.10, 106.90] as LatLngExpression, status: "At Port" },
-    { id: 3, name: "MSC Gulsun", position: [-6.09, 106.87] as LatLngExpression, status: "In Transit" },
-    { id: 4, name: "CMA CGM Jacques Saadé", position: [-6.11, 106.86] as LatLngExpression, status: "Alert" },
+    { id: 1, name: "Ever Ace", position: [-6.08, 106.92] as LatLngExpression, status: "In Transit", type: 'cargo' },
+    { id: 2, name: "HMM Algeciras", position: [-6.12, 106.85] as LatLngExpression, status: "At Port", type: 'tanker' },
+    { id: 3, name: "GLOVIS CRYSTAL", position: [-6.07, 106.91] as LatLngExpression, status: "At Port", type: 'cargo' },
+    { id: 4, name: "CMA CGM Jacques Saadé", position: [-6.09, 106.84] as LatLngExpression, status: "Alert", type: 'cargo' },
+    { id: 5, name: "Speedy Ferry", position: [-6.05, 106.88] as LatLngExpression, status: "In Transit", type: 'passenger' },
+    { id: 6, name: "Pelindo Tug 1", position: [-6.11, 106.91] as LatLngExpression, status: "At Port", type: 'tug' },
+    { id: 7, name: "Fisher 77", position: [-6.075, 106.83] as LatLngExpression, status: "Fishing", type: 'fish' },
+    { id: 8, name: "Express Runner", position: [-6.13, 106.88] as LatLngExpression, status: "High Speed", type: 'highspeed' },
+    { id: 9, name: "Coastal Trader", position: [-6.10, 106.92] as LatLngExpression, status: "In Transit", type: 'cargo' },
+    { id: 10, name: "Harbour Pilot", position: [-6.06, 106.86] as LatLngExpression, status: "Standby", type: 'other' },
+    { id: 11, name: "Oil Carrier 12", position: [-6.11, 106.82] as LatLngExpression, status: "In Transit", type: 'tanker' },
+    { id: 12, name: "Supply Vessel 3", position: [-6.04, 106.89] as LatLngExpression, status: "At Anchor", type: 'other' },
   ];
 
   return (

@@ -4,10 +4,23 @@ import React, { useEffect, useState } from 'react';
 import type { LatLngExpression } from 'leaflet';
 import L from 'leaflet';
 
-// Create ship icon from PNG
-const createShipIcon = () => {
+// Create ship icon from PNG based on vessel type
+const createShipIcon = (type?: string) => {
+  const mapType = (type || 'other').toString().toLowerCase();
+  const icons: Record<string, string> = {
+    cargo: '/cargo.png',
+    fish: '/fish.png',
+    highspeed: '/highspeed.png',
+    other: '/other.png',
+    passenger: '/passenger.png',
+    tanker: '/tanker.png',
+    tug: '/tug.png',
+  };
+
+  const iconUrl = icons[mapType] || icons.other;
+
   return L.icon({
-    iconUrl: '/cargo_ship.png',
+    iconUrl,
     iconSize: [32, 32],
     iconAnchor: [16, 16],
     popupAnchor: [0, -16]
@@ -60,7 +73,7 @@ const PortMap = ({ vessels }: { vessels: any[] }) => {
                     }
 
                     return (
-                      <Marker key={pointIndex} position={point} icon={createShipIcon()}>
+                      <Marker key={pointIndex} position={point} icon={createShipIcon((vessel as any).type)}>
                         <Popup>
                           <div>
                             <strong>{vessel.name}</strong><br />

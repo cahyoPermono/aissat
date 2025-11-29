@@ -7,6 +7,7 @@ interface VoyageMapProps {
   to: [number, number];
   fromName: string;
   toName: string;
+  waypoints?: [number, number][];
 }
 
 const MapPlaceholder = () => (
@@ -15,17 +16,30 @@ const MapPlaceholder = () => (
   </div>
 );
 
-// Create ship icon from PNG
-const createShipIcon = () => {
+// Create ship icon from PNG based on vessel type
+const createShipIcon = (type?: string) => {
+  const mapType = (type || 'other').toString().toLowerCase();
+  const icons: Record<string, string> = {
+    cargo: '/cargo.png',
+    fish: '/fish.png',
+    highspeed: '/highspeed.png',
+    other: '/other.png',
+    passenger: '/passenger.png',
+    tanker: '/tanker.png',
+    tug: '/tug.png',
+  };
+
+  const iconUrl = icons[mapType] || icons.other;
+
   return L.icon({
-    iconUrl: '/cargo_ship.png',
+    iconUrl,
     iconSize: [32, 32],
     iconAnchor: [16, 16],
     popupAnchor: [0, -16]
   });
 };
 
-export function VoyageMap({ from, to, fromName, toName }: VoyageMapProps) {
+export function VoyageMap({ from, to, fromName, toName, waypoints }: VoyageMapProps) {
   const [MapComponent, setMapComponent] = useState(() => MapPlaceholder);
 
   useEffect(() => {
@@ -34,8 +48,13 @@ export function VoyageMap({ from, to, fromName, toName }: VoyageMapProps) {
       const { MapContainer, TileLayer, Marker, Popup, Polyline } = await import('react-leaflet');
 
       const ClientMap = () => {
+        // Build route path: from -> waypoints -> to
+        const routePath = waypoints && waypoints.length > 0
+          ? [from, ...waypoints, to]
+          : [from, to];
+
         return (
-            <MapContainer center={from} zoom={8} scrollWheelZoom={true} style={{ height: '100%', width: '100%', zIndex: 0, borderRadius: '8px' }}>
+            <MapContainer center={from} zoom={4} scrollWheelZoom={true} style={{ height: '100%', width: '100%', zIndex: 0, borderRadius: '8px' }}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
               url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
@@ -46,14 +65,20 @@ export function VoyageMap({ from, to, fromName, toName }: VoyageMapProps) {
             <Marker position={to} icon={createShipIcon()}>
               <Popup>{`Arrival: ${toName}`}</Popup>
             </Marker>
-            <Polyline positions={[from, to]} color="#2b6ef6" />
+            <Polyline 
+              positions={routePath} 
+              color="#2b6ef6"
+              weight={2}
+              opacity={0.8}
+              dashArray="5, 5"
+            />
           </MapContainer>
         );
       };
 
       setMapComponent(() => ClientMap);
     })();
-  }, [from, to, fromName, toName]);
+  }, [from, to, fromName, toName, waypoints]);
 
   return <MapComponent />;
 }
