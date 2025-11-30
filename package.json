@@ -12,6 +12,8 @@
     "deploy": "gh-pages -d build/client"
   },
   "dependencies": {
+    "@nivo/core": "^0.99.0",
+    "@nivo/sankey": "^0.99.0",
     "@react-router/node": "^7.9.2",
     "@react-router/serve": "^7.9.2",
     "@types/leaflet": "^1.9.21",

@@ -48,7 +48,9 @@ export const voyageGroups: VoyageGroup[] = [
         to: 'Qui Nhon',
         duration: '25',
         commodities: [
+          { id: 'c1', name: 'Container', quantity: '500 MT' },
           { id: 'c2', name: 'Bauxite', quantity: '1,000 MT' },
+          { id: 'c3', name: 'n/a', quantity: '2,000 MT' },
         ],
         coordinates: { from: [-2.75, 107.75], to: [13.78, 109.23] },
         waypoints: [

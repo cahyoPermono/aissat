@@ -4,6 +4,7 @@ import { Ship, Anchor, AlertTriangle, Map, Wifi, Dot, Search, Bell, ChevronsUpDo
 import { useIsClient } from '../hooks/useIsClient';
 import { LiveMap } from './LiveMap';
 import { MapOnly } from './MapOnly';
+import { SankeyCommodityChart } from './SankeyChart';
 import type { LatLngExpression } from 'leaflet';
 
 const vesselData = [
@@ -168,6 +169,15 @@ export function Dashboard() {
             ))}
           </div>
         </div>
+
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
+        <div className="mb-4">
+          <h2 className="text-lg font-semibold text-gray-800">Commodity Flow Analysis</h2>
+          <p className="text-sm text-gray-500">Visualizing commodity movement from Origin to Type</p>
+        </div>
+        <SankeyCommodityChart />
       </div>
 
       <div className="bg-white p-6 rounded-lg shadow-sm">
