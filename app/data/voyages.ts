@@ -54,8 +54,10 @@ export const voyageGroups: VoyageGroup[] = [
         ],
         coordinates: { from: [-2.75, 107.75], to: [13.78, 109.23] },
         waypoints: [
-          [2.5, 109.0],   // Northeast through sea
-          [8.0, 110.5],   // Continue through sea towards Vietnam
+          [1.0, 108.0],   // North through Java Sea
+          [4.0, 109.0],   // Northeast through South China Sea
+          [7.0, 110.0],   // Continue northeast avoiding land
+          [10.0, 110.5],  // Towards Vietnam coast through sea
           [13.78, 109.23] // Arrival at Qui Nhon
         ],
       },
@@ -73,10 +75,12 @@ export const voyageGroups: VoyageGroup[] = [
         ],
         coordinates: { from: [-2.75, 107.75], to: [23.02, 113.75] },
         waypoints: [
-          [2.5, 109.0],    // Northeast through sea towards Malaysia
-          [8.0, 111.0],    // Continue northeast through South China Sea
-          [15.0, 112.0],   // Further northeast towards Dongguan
-          [20.0, 113.0],   // Approaching destination
+          [1.0, 108.0],    // North through Java Sea
+          [4.0, 109.0],    // Northeast through South China Sea
+          [8.0, 111.0],    // Continue northeast avoiding land masses
+          [12.0, 112.0],   // Further northeast keeping offshore
+          [16.0, 112.5],   // Approaching China coast through sea
+          [20.0, 113.0],   // Approaching destination through sea
         ],
       },
     ]
@@ -101,9 +105,12 @@ export const voyageGroups: VoyageGroup[] = [
         ],
         coordinates: { from: [-2.75, 107.75], to: [13.75, 100.51] },
         waypoints: [
-          [2.5, 109.0],    // Northeast through sea
-          [8.0, 107.5],    // Continue towards Malacca Strait area
-          [12.0, 104.0],   // Through Malacca Strait
+          [1.0, 108.0],    // North through Java Sea
+          [4.0, 108.5],    // Continue north avoiding land
+          [6.0, 106.5],    // Through Karimata Strait
+          [8.0, 105.0],    // South China Sea approach
+          [10.0, 103.0],   // Entering Malacca Strait
+          [12.0, 102.0],   // Through Malacca Strait
           [13.75, 100.51]  // Arrival at Bangkok
         ],
       },
@@ -121,10 +128,12 @@ export const voyageGroups: VoyageGroup[] = [
         ],
         coordinates: { from: [-2.75, 107.75], to: [20.84, 106.68] },
         waypoints: [
-          [2.5, 109.0],    // Northeast through sea
-          [8.0, 109.5],    // Continue northeast
-          [12.0, 109.0],   // Further northeast towards Vietnam
-          [16.0, 108.0],   // Approaching Vietnam coast
+          [1.0, 108.0],    // North through Java Sea
+          [4.0, 109.0],    // Northeast through South China Sea
+          [8.0, 109.5],    // Continue northeast avoiding land
+          [12.0, 109.5],   // Keeping offshore in South China Sea
+          [16.0, 108.5],   // Approaching Vietnam coast through sea
+          [19.0, 107.5],   // Final approach to Haiphong
           [20.84, 106.68]  // Arrival at Haiphong
         ],
       },
