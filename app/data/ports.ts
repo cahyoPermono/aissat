@@ -45,8 +45,8 @@ import { voyageGroups } from './voyages';
 (function populatePorts() {
   voyageGroups.forEach(group => {
     group.vessels.forEach(vessel => {
-      // Check if vessel is currently at a port (assuming 'from' indicates current location)
-      const port = ports.find(p => p.name === vessel.from);
+      // Check if vessel is departing from or arriving to a port
+      const port = ports.find(p => p.name === vessel.from || p.name === vessel.to);
       if (port) {
         port.vessels.push(vessel);
         // Add commodities to port's commodities if not already present

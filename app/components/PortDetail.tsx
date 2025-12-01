@@ -126,7 +126,7 @@ export function PortDetail() {
         <div className="mb-8">
           <div className="flex items-center mb-2">
             <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-cyan-500 rounded-full mr-4"></div>
-            <h1 className="text-4xl font-bold text-slate-800">{port.name} Port Operations</h1>
+            <h1 className="text-4xl font-bold text-slate-800">{port.name} Port Commodity</h1>
           </div>
           <p className="text-slate-600 text-lg ml-5">Real-time vessel tracking and commodity operations</p>
         </div>
